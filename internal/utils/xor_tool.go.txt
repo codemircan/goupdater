@@ -1,0 +1,23 @@
+package main
+
+import (
+	"fmt"
+	"os"
+	"github.com/redteam/golang-rat/internal/utils"
+)
+
+func main() {
+	if len(os.Args) < 3 {
+		fmt.Println("Usage: go run xor_tool.go <string> <key>")
+		return
+	}
+
+	data := []byte(os.Args[1])
+	key := []byte(os.Args[2])
+
+	encrypted := utils.XOR(data, key)
+
+	fmt.Printf("Original: %s\n", os.Args[1])
+	fmt.Printf("Key:      %s\n", os.Args[2])
+	fmt.Printf("Byte array: %#v\n", encrypted)
+}
